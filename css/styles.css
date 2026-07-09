@@ -1,11 +1,12 @@
 /* ==========================================
-   1. ESTILOS GENERALES Y RESET
+   1. ESTILOS GENERALES Y RESET - ESQUINAS RECTAS
    ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 0 !important; /* Quita absolutamente todo lo redondeado */
 }
 
 body {
@@ -46,10 +47,12 @@ a {
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: 800;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 32px; 
+    font-weight: normal; 
     color: #38bdf8; 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .nav-menu {
@@ -71,7 +74,19 @@ a {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
+}
+
+.nav-link-login {
+    font-weight: 500;
+    font-size: 15px;
+    color: #f8fafc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-link-login:hover {
+    color: #38bdf8;
 }
 
 .user-greeting {
@@ -84,7 +99,6 @@ a {
     background-color: #0f172a;
     border: 1px solid #334155;
     padding: 8px 15px;
-    border-radius: 20px;
     color: #fff;
     outline: none;
     transition: border-color 0.3s;
@@ -94,28 +108,11 @@ a {
     border-color: #38bdf8;
 }
 
-.btn-login {
-    background-color: #38bdf8;
-    color: #0f172a;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.btn-login:hover {
-    background-color: #0ea5e9;
-    transform: scale(1.03);
-}
-
 .btn-register {
     background-color: transparent;
     color: #38bdf8;
     border: 2px solid #38bdf8;
     padding: 6px 16px;
-    border-radius: 20px;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.2s;
@@ -180,9 +177,17 @@ a {
 }
 
 .carousel-caption h2 {
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 48px; 
+    letter-spacing: 1px;
+    margin-bottom: 12px;
     color: #38bdf8;
+    text-transform: uppercase;
+}
+
+.carousel-caption p {
+    font-size: 16px;
+    color: #f8fafc;
 }
 
 .carousel-control {
@@ -195,7 +200,6 @@ a {
     font-size: 24px;
     padding: 15px;
     cursor: pointer;
-    border-radius: 50%;
     transition: background-color 0.3s;
     z-index: 10;
 }
@@ -209,7 +213,7 @@ a {
 .carousel-control.next { right: 20px; }
 
 /* ==========================================
-   4. CARTELERA DISÉÑO RECTANGULAR (TELETICKET STYLE)
+   4. CARTELERA DISEÑO RECTANGULAR NETO
    ========================================== */
 .section-header {
     display: flex;
@@ -231,37 +235,35 @@ a {
     font-weight: 600;
 }
 
-/* Una sola columna de filas rectangulares */
 .event-grid {
     display: grid;
     grid-template-columns: 1fr; 
     gap: 20px;
 }
 
-/* Tarjeta en fila horizontal */
 .event-card {
     background-color: #1e293b;
-    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
-    display: flex; /* Alineación horizontal de imagen y textos */
+    display: flex; 
     flex-direction: row; 
     cursor: pointer;
     color: inherit;
     text-decoration: none;
-    height: 160px; /* Altura perfecta tipo Teleticket */
+    height: 160px; 
+    border: 1px solid #334155;
 }
 
 .event-card:hover {
     transform: scale(1.01);
-    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
     background-color: #223147;
+    border-color: #38bdf8;
 }
 
-/* Contenedor cuadrado/rectangular izquierdo de la foto */
 .card-img-wrapper {
-    width: 240px; /* Ancho fijo para el afiche */
+    width: 240px; 
     height: 100%;
     flex-shrink: 0;
     overflow: hidden;
@@ -279,7 +281,7 @@ a {
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centra verticalmente los textos */
+    justify-content: center; 
     flex-grow: 1;
 }
 
@@ -290,16 +292,19 @@ a {
     font-weight: 700;
     text-transform: uppercase;
     padding: 4px 10px;
-    border-radius: 20px;
     width: max-content;
     margin-bottom: 10px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 .card-content h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 6px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 22px; 
+    font-weight: normal; 
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
     color: #fff;
+    text-transform: uppercase; 
     transition: color 0.3s;
 }
 
@@ -312,7 +317,6 @@ a {
     color: #94a3b8;
 }
 
-/* Adaptación para pantallas de celulares */
 @media (max-width: 650px) {
     .event-card {
         flex-direction: column;
@@ -325,7 +329,7 @@ a {
 }
 
 /* ==========================================
-   5. ESTILOS DE LOS MODALES (VENTANAS EMERGENTES)
+   5. ESTILOS DE LOS MODALES
    ========================================== */
 .modal-overlay {
     position: fixed;
@@ -333,8 +337,8 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(15, 23, 42, 0.85); /* Capa oscura translúcida */
-    backdrop-filter: blur(5px); /* Efecto difuminado premium */
+    background-color: rgba(15, 23, 42, 0.85); 
+    backdrop-filter: blur(5px); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -344,7 +348,6 @@ a {
     transition: opacity 0.3s ease;
 }
 
-/* Clase para abrir los modales desde JS */
 .modal-overlay.show {
     opacity: 1;
     pointer-events: auto;
@@ -353,14 +356,15 @@ a {
 .modal-box {
     background-color: #1e293b;
     padding: 40px;
-    border-radius: 16px;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px; 
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     position: relative;
     border: 1px solid #334155;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
+    max-height: 90vh; 
+    overflow-y: auto;
 }
 
 .modal-overlay.show .modal-box {
@@ -382,17 +386,19 @@ a {
 }
 
 .modal-box h3 {
-    font-size: 24px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 26px;
     margin-bottom: 25px;
     color: #fff;
-    font-weight: 700;
+    font-weight: 800; 
+    letter-spacing: -0.5px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .form-group label {
@@ -404,8 +410,7 @@ a {
 .form-group input {
     background-color: #0f172a;
     border: 1px solid #334155;
-    padding: 12px 15px;
-    border-radius: 8px;
+    padding: 10px 14px;
     color: #fff;
     outline: none;
     font-size: 14px;
@@ -422,7 +427,6 @@ a {
     border: none;
     width: 100%;
     padding: 12px;
-    border-radius: 8px;
     font-weight: 700;
     font-size: 15px;
     cursor: pointer;
@@ -434,15 +438,143 @@ a {
     background-color: #0ea5e9;
 }
 
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.auth-switch a {
+    color: #38bdf8;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-switch a:hover {
+    color: #0ea5e9;
+    text-decoration: underline;
+}
+
 /* ==========================================
-   6. PIE DE PÁGINA (FOOTER)
+   6. PIE DE PÁGINA (FOOTER) - CON LOGO Y ENLACES AGRUPADOS
    ========================================== */
 .main-footer {
     background-color: #0f172a;
     border-top: 1px solid #1e293b;
-    text-align: center;
-    padding: 30px;
-    color: #64748b;
-    font-size: 14px;
+    padding: 60px 20px 30px 20px;
     margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start; /* Todo alineado a la izquierda */
+    align-items: flex-start; /* Alineado arriba */
+    gap: 120px; /* Separación fija y moderada entre logo y menú */
+}
+
+/* ZONA DEL LOGO EN GRANDE */
+.footer-logo-zone {
+    flex-shrink: 0;
+}
+
+.footer-big-logo {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 72px; 
+    color: rgba(56, 189, 248, 0.8); 
+    letter-spacing: 5px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.2); 
+    user-select: none;
+}
+
+/* MENÚ CORPORATIVO */
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left; /* Ahora los textos miran a la izquierda */
+}
+
+.footer-title {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    color: #f8fafc; 
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.footer-link {
+    color: #94a3b8;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #38bdf8;
+}
+
+/* SECCIÓN COPYRIGHT COMPARTIDA ABAJO */
+.footer-copyright {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    color: #64748b;
+    font-size: 13px;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    padding-top: 25px;
+    width: 100%;
+}
+
+/* Responsive para pantallas chicas (Celulares) */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-logo-zone, .footer-links {
+        text-align: center;
+    }
+    .footer-big-logo {
+        font-size: 56px;
+    }
+}
+/* ==========================================
+   7. AJUSTES PARA LOS BOTONES DE INSCRIPCIÓN DINÁMICOS
+   ========================================== */
+.btn-inscripcion {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.3s, color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-inscripcion:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+/* Estado cuando el usuario ya se inscribió */
+.btn-inscripcion.cancelar {
+    color: #ef4444; /* Rojo neto para alertas/cancelación */
+    border-color: #ef4444;
+}
+
+.btn-inscripcion.cancelar:hover {
+    background-color: #ef4444;
+    color: #f8fafc;
 }
