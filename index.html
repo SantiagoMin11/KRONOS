@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KRONOS - Venta de Entradas</title>
+    <title>KRONOS - Tu Ticket de Entrada</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <!-- NAVBAR / BARRA DE NAVEGACIÓN -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">KRONOS</a>
-            
+            <a href="index.html" class="logo" id="navLogo">KRONOS</a>
             <nav class="nav-menu">
-                <a href="#" class="nav-link active">Inicio</a>
-                <a href="#" class="nav-link">Conciertos</a>
-                <a href="#" class="nav-link">Teatro</a>
-                <a href="#" class="nav-link">Deportes</a>
+                <a href="#" class="nav-link active" data-categoria="todos">Inicio</a>
+                <a href="#" class="nav-link" data-categoria="conciertos">Conciertos</a>
+                <a href="#" class="nav-link" data-categoria="teatro">Teatro</a>
+                <a href="#" class="nav-link" data-categoria="deportes">Deportes</a>
             </nav>
-
-            <!-- Acciones de Usuario con Enlace de Texto Limpio -->
-            <div class="nav-actions" id="navActions">
+            <div class="nav-actions">
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Buscar evento...">
                 </div>
@@ -29,125 +24,84 @@
             </div>
         </div>
     </header>
-
-    <!-- CARRUSEL DE IMÁGENES -->
-    <section class="carousel-section">
+    <section class="carousel-section" id="mainCarousel">
         <div class="carousel-container">
             <div class="carousel-slide active">
-                <img src="img/paulo londra.jpg" alt="Paulo Londra: Next Rounds">
+                <img src="img/paulo londra.jpg" alt="Paulo Londra">
                 <div class="carousel-caption">
                     <h2>Paulo Londra: Next Rounds</h2>
                     <p>¡Vuelve el as de las rimas! Asegura tu lugar en el Estadio Nacional.</p>
                 </div>
             </div>
             <div class="carousel-slide">
-                <img src="img/ricky marti.jpg" alt="Ricky Martin Live">
+                <img src="img/ricky marti.jpg" alt="Ricky Martin">
                 <div class="carousel-caption">
                     <h2>Ricky Martin Live</h2>
                     <p>Una noche inolvidable bajo las estrellas en Costa 21.</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="img/chino y nacho.jpg" alt="Chyno y Nacho en Lima">
-                <div class="carousel-caption">
-                    <h2>Chyno y Nacho en Lima</h2>
-                    <p>El regreso más esperado del pop urbano. ¡Compra ya!</p>
                 </div>
             </div>
         </div>
         <button class="carousel-control prev" id="prevBtn">&#10094;</button>
         <button class="carousel-control next" id="nextBtn">&#10095;</button>
     </section>
-
-    <!-- CONTENIDO - RECTANGULARES INTEGRADOS DINÁMICAMENTE -->
     <main class="container">
         <div class="section-header">
-            <h2>Próximos Eventos Destacados</h2>
-            <a href="#" class="see-all">Ver toda la cartelera</a>
+            <h2 id="sectionTitle">Próximos Eventos Destacados</h2>
         </div>
-        
-        <!-- Este ID es clave para que JavaScript dibuje la cartelera con POO -->
-        <div class="event-grid" id="eventGrid">
-            <!-- El contenido se genera automáticamente desde el archivo JS -->
-        </div>
+        <div class="event-grid" id="eventGrid"></div>
     </main>
-
-    <!-- UN SOLO MODAL DE AUTENTICACIÓN -->
     <div id="authModal" class="modal-overlay">
         <div class="modal-box">
             <span class="close-modal" id="closeAuth">&times;</span>
-            
-            <!-- SECCIÓN: INICIAR SESIÓN -->
-            <div id="loginSection">
-                <h3>Iniciar Sesión</h3>
-                <form id="loginForm">
+            <h3 id="modalTitle">Iniciar Sesión</h3>
+            <form id="loginForm">
+                <div id="registroCampos" style="display: none; margin-bottom: 18px;">
                     <div class="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" id="loginEmail" required placeholder="ejemplo@correo.com">
+                        <label>Nombres y Apellidos</label>
+                        <input type="text" id="regNombre" placeholder="Juan Pérez Mendoza">
                     </div>
-                    <div class="form-group">
-                        <label>Contraseña</label>
-                        <input type="password" id="loginPassword" required placeholder="******">
-                    </div>
-                    <button type="submit" class="modal-submit-btn">Ingresar</button>
-                </form>
-                <p class="auth-switch">¿Nuevo en KRONOS? <a href="#" id="switchToRegister">Regístrate aquí</a></p>
-            </div>
-
-            <!-- SECCIÓN: REGISTRO -->
-            <div id="registerSection" style="display: none;">
-                <h3>Crear Cuenta en KRONOS</h3>
-                <form id="registerForm">
-                    <div class="form-group">
-                        <label>Nombre Completo</label>
-                        <input type="text" id="regName" required placeholder="Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label>Documento de Identidad (DNI/CE)</label>
-                        <input type="text" id="regDocument" required placeholder="Número de documento" maxlength="12">
+                    <div style="display: flex; gap: 10px; margin-bottom: 18px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; font-size: 12px; color: #9ca3af; margin-bottom: 6px; text-transform: uppercase;">Tipo</label>
+                            <select id="regTipoDoc" style="width: 100%; background-color: #1f2937; border: 1px solid #374151; color: #fff; padding: 10px; font-size: 14px; height: 38px;">
+                                <option value="DNI">DNI</option>
+                                <option value="CE">C.E.</option>
+                            </select>
+                        </div>
+                        <div style="flex: 2; margin-bottom: 0;" class="form-group">
+                            <label>N° Documento</label>
+                            <input type="text" id="regDoc" placeholder="71234567" maxlength="12">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Número de Celular</label>
-                        <input type="tel" id="regPhone" required placeholder="987654321">
+                        <input type="tel" id="regCelular" placeholder="987654321" maxlength="9">
                     </div>
                     <div class="form-group">
-                        <label>Correo Electrónico</label>
-                        <input type="email" id="regEmail" required placeholder="ejemplo@correo.com">
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" id="regFechaNac" style="width: 100%; background-color: #1f2937; border: 1px solid #374151; color: #fff; padding: 10px; font-size: 14px;">
                     </div>
-                    <div class="form-group">
-                        <label>Contraseña</label>
-                        <input type="password" id="regPassword" required placeholder="Mínimo 6 caracteres">
-                    </div>
-                    <button type="submit" class="modal-submit-btn">Registrarme</button>
-                </form>
-                <p class="auth-switch">¿Ya tienes cuenta? <a href="#" id="switchToLogin">Inicia sesión aquí</a></p>
-            </div>
+                </div>
+                <div class="form-group">
+                    <label id="labelEmail">Correo Electrónico</label>
+                    <input type="email" id="loginEmail" placeholder="ejemplo@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label id="labelPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="modal-submit-btn" id="modalSubmitBtn">Ingresar</button>
+                <p class="modal-switch-text" id="switchBox">
+                    ¿No tienes una cuenta? <a href="#" id="goToRegister">Regístrate aquí</a>
+                </p>
+            </form>
         </div>
     </div>
-
-    <!-- PIE DE PÁGINA: LOGO + ENLACES MÁS CERCANOS -->
     <footer class="main-footer">
-        <div class="footer-container">
-            <!-- Bloque Izquierdo: Logo Gigante -->
-            <div class="footer-logo-zone">
-                <span class="footer-big-logo">KRONOS</span>
-            </div>
-            
-            <!-- Bloque Derecho: Enlaces (Alineados a la izquierda y más juntos) -->
-            <div class="footer-links">
-                <span class="footer-title">CONOZCÁMONOS</span>
-                <a href="#" class="footer-link">Acerca de nosotros</a>
-                <a href="#" class="footer-link">Términos y condiciones</a>
-                <a href="#" class="footer-link">Política de privacidad</a>
-                <a href="#" class="footer-link">Derechos Arco</a>
-            </div>
-        </div>
-        
         <div class="footer-copyright">
             <p>&copy; 2026 KRONOS. Todos los derechos reservados.</p>
         </div>
     </footer>
-
     <script src="js/main.js"></script>
 </body>
 </html>
