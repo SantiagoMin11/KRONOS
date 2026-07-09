@@ -1,0 +1,448 @@
+/* ==========================================
+   1. ESTILOS GENERALES Y RESET
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f172a; 
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ==========================================
+   2. BARRA DE NAVEGACIÓN (NAVBAR)
+   ========================================== */
+.navbar {
+    background-color: #1e293b; 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #38bdf8; 
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #38bdf8;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-greeting {
+    font-weight: 600;
+    color: #38bdf8;
+    font-size: 14px;
+}
+
+.search-box input {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #38bdf8;
+}
+
+.btn-login {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-login:hover {
+    background-color: #0ea5e9;
+    transform: scale(1.03);
+}
+
+.btn-register {
+    background-color: transparent;
+    color: #38bdf8;
+    border: 2px solid #38bdf8;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.btn-register:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+    transform: scale(1.03);
+}
+
+/* ==========================================
+   3. CARRUSEL DE IMÁGENES (BANNER)
+   ========================================== */
+.carousel-section {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.5);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 50px;
+    left: 10%;
+    max-width: 600px;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.carousel-caption h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(30, 41, 59, 0.7);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    z-index: 10;
+}
+
+.carousel-control:hover {
+    background-color: #38bdf8;
+    color: #0f172a;
+}
+
+.carousel-control.prev { left: 20px; }
+.carousel-control.next { right: 20px; }
+
+/* ==========================================
+   4. CARTELERA DISÉÑO RECTANGULAR (TELETICKET STYLE)
+   ========================================== */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-left: 5px solid #38bdf8;
+    padding-left: 15px;
+}
+
+.section-header h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.see-all {
+    color: #38bdf8;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Una sola columna de filas rectangulares */
+.event-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px;
+}
+
+/* Tarjeta en fila horizontal */
+.event-card {
+    background-color: #1e293b;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; /* Alineación horizontal de imagen y textos */
+    flex-direction: row; 
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    height: 160px; /* Altura perfecta tipo Teleticket */
+}
+
+.event-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+    background-color: #223147;
+}
+
+/* Contenedor cuadrado/rectangular izquierdo de la foto */
+.card-img-wrapper {
+    width: 240px; /* Ancho fijo para el afiche */
+    height: 100%;
+    flex-shrink: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.card-content {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente los textos */
+    flex-grow: 1;
+}
+
+.card-tag {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: max-content;
+    margin-bottom: 10px;
+}
+
+.card-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.event-card:hover h3 {
+    color: #38bdf8;
+}
+
+.event-info {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Adaptación para pantallas de celulares */
+@media (max-width: 650px) {
+    .event-card {
+        flex-direction: column;
+        height: auto;
+    }
+    .card-img-wrapper {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+/* ==========================================
+   5. ESTILOS DE LOS MODALES (VENTANAS EMERGENTES)
+   ========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85); /* Capa oscura translúcida */
+    backdrop-filter: blur(5px); /* Efecto difuminado premium */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Clase para abrir los modales desde JS */
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background-color: #1e293b;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 1px solid #334155;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-box {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #38bdf8;
+}
+
+.modal-box h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.form-group input {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #38bdf8;
+}
+
+.modal-submit-btn {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.modal-submit-btn:hover {
+    background-color: #0ea5e9;
+}
+
+/* ==========================================
+   6. PIE DE PÁGINA (FOOTER)
+   ========================================== */
+.main-footer {
+    background-color: #0f172a;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 50px;
+}
